@@ -1,0 +1,18 @@
+========== Conception ==========
+- Tout le contenu est dans une seule et même table, on le différencie grâce à un champ "type" par exemple qui contient le type de contenu
+	"news", "page", …
+- On pourrais mettre un booléen pour distinguer "news" ou "page" si on a que deux types de contenu
+		Remarque : le booléen est moins flexible par la suite si on apporte des améliorations 
+- A chaque contenu on affecte une catégorie, éditable par l'administrteur. Il fat donc prévoir une table des catégories
+- Quel que soit le contenu, il doit y avoir un contenu : texte plus ou moins court en fonction du contenu
+- Créer des éditos, toutes les semaines ou du mois, un bilan de la période, toujours affiché en haut
+- 
+
+=========== Données ===========
+- titre du contenu
+- type de contenu (page, news, image…) (référence dans une autre table)
+- catégorie du contenu (référence dans une autre table)
+- contenu
+
+========== Affichage ===========
+
