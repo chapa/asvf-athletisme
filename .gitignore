@@ -2,3 +2,4 @@
 app/config/database.php
 app/tmp
 app/webroot/files
+app/webroot/css/bootstrap.css
