@@ -1,0 +1,32 @@
+========== Conception ==========
+- Informations de connexion : pseudo et mot de passe (obligatoires)
+- Renseignements supplémentaires pas obligatoire :
+	Nom, Prénom, date de naissance, 
+- Renseignements obligatoires :
+	Mail (public, privé ou protégé), date inscription
+- Système de captcha pour afficher le mail
+- Statuts de membres :	Restreint		(peut se connecter, ne peut pas poster)
+						Adhérent		(peut poster)
+						Rédacteur		(peut écrire)
+						Administrateur	(peut tout)
+- Correspondance des statuts au niveau logiciel
+- Compte restreint par défaut
+
+=========== Données ===========
+- pseudo
+- mot de passe
+- nom
+- prenom
+- date de naissance
+- mail
+- affichage mail (ENUM ('pri', 'pro', 'pub'))
+- statut (ENUM ('Restreint', 'Adhérent', 'Rédacteur', 'Administrateur'))
+- Date d'inscription
+
+========== Affichage ===========
+
+- Si la personne en train de visualiser la page est connecté, on affiche nom+prenom s'ils sont reseignés
+	sinon, on affiche le pseudo
+- Lors de l'affichage du mail,	public	=> on affiche quelles que soientt les conditions
+								protégé	=> on affiche qu'aux membres enregistrés (donc connectés)
+								privé	=> on n'affiche l'adresse qu'au propriétaire

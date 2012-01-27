@@ -3,16 +3,22 @@
 	"news", "page", …
 - On pourrais mettre un booléen pour distinguer "news" ou "page" si on a que deux types de contenu
 		Remarque : le booléen est moins flexible par la suite si on apporte des améliorations 
-- A chaque contenu on affecte une catégorie, éditable par l'administrteur. Il fat donc prévoir une table des catégories
+- A chaque contenu on affecte une catégorie, éditable par l'administrteur. Il faut donc prévoir une table des catégories
 - Quel que soit le contenu, il doit y avoir un contenu : texte plus ou moins court en fonction du contenu
 - Créer des éditos, toutes les semaines ou du mois, un bilan de la période, toujours affiché en haut
-- 
+- Seul la personne qui l'a créé peut modifier ou un administrateur
+- Seul un administrateur peut créer des pages
+- On peut choisir la date de publication
 
 =========== Données ===========
 - titre du contenu
 - type de contenu (page, news, image…) (référence dans une autre table)
 - catégorie du contenu (référence dans une autre table)
 - contenu
+- date de création
+- date de publication
 
 ========== Affichage ===========
 
+- La personne qui a édité le contenu (pas trop gros : moins important)
+- date de publication pour les articles uniquement

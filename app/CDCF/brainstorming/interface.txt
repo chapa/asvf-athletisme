@@ -1,0 +1,13 @@
+========== Conception ==========
+- Topbar avec la liste des pages, représentation intervallaire avec des pages précèdents d'autres, la racine de l'arbre représente un menu
+- Liste des pages dans la topbar (pour les non-connectés, accès par ailleurs pour les autres (menu de gauche ?))
+- Design "extensible" (container-fluid) pour les connectés et design "fixe" (container) pour les non-connectés
+- Système de connexion rapide (avec clic)
+- Liste des pages dans la sidebarre pour les connectés
+
+=========== Données ===========
+- 
+
+========== Affichage ===========
+
+- 
