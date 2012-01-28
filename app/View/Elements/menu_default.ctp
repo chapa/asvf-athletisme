@@ -6,7 +6,9 @@
 		<?php echo $this->Html->link('ASVF Athlétisme', '/', array('class' => 'brand')) ?>
 		<ul class="nav">
 			<?php foreach($pages as $v) : $v = current($v); ?>
-				<li><?php echo $this->Html->link($v['name'], $v['link']) ?></li>
+				<li<?php echo ($this->request->here == $this->Html->url($v['link'])) ? ' class="active"' : ''; ?>>
+					<?php echo $this->Html->link($v['name'], $v['link']) ?>
+				</li>
 			<?php endforeach; ?>
 		</ul>
 		</div>
