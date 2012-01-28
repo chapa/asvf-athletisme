@@ -9,8 +9,10 @@
 - Seul la personne qui l'a créé peut modifier ou un administrateur
 - Seul un administrateur peut créer des pages
 - On peut choisir la date de publication
+- Chaque contenu a un slug : il correspond à la partie "descriptive" dans l'url de la page
 
 =========== Données ===========
+- slug du contenu
 - titre du contenu
 - type de contenu (page, news, image…) (référence dans une autre table)
 - catégorie du contenu (référence dans une autre table)

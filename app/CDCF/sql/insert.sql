@@ -14,8 +14,8 @@ INSERT INTO content_categories VALUES(DEFAULT, 'Club');
 INSERT INTO content_categories VALUES(DEFAULT, 'Compétitions');
 
 	-- contents(id, name, content, created, published, content_type_id, content_category_id, member_id)
-INSERT INTO contents VALUES(DEFAULT, 'Nouveau site !', 'Bon là je sais pas quoi dire donc je vais rien dire, a+', DEFAULT, DEFAULT, 2, 1, 4);
-INSERT INTO contents VALUES(DEFAULT, 'Nouvelle compétition', 'Bon là je sais pas quoi dire donc je vais rien dire, a+', DEFAULT, DEFAULT, 2, 3, 3);
-INSERT INTO contents VALUES(DEFAULT, 'Le club', 'Bon là je sais pas quoi dire donc je vais rien dire, a+', DEFAULT, DEFAULT, 1, 2, 4);
-INSERT INTO contents VALUES(DEFAULT, 'Les compétitions', 'Bon là je sais pas quoi dire donc je vais rien dire, a+', DEFAULT, DEFAULT, 1, 3, 4);
+INSERT INTO contents VALUES(DEFAULT, 'Nouveau site !', 'nouveau-site', 'Bon là je sais pas quoi dire donc je vais rien dire, a+', DEFAULT, DEFAULT, 2, 1, 4);
+INSERT INTO contents VALUES(DEFAULT, 'Nouvelle compétition', 'nouvelle-competition', 'Bon là je sais pas quoi dire donc je vais rien dire, a+', DEFAULT, DEFAULT, 2, 3, 3);
+INSERT INTO contents VALUES(DEFAULT, 'Le club', 'le-club', 'Bon là je sais pas quoi dire donc je vais rien dire, a+', DEFAULT, DEFAULT, 1, 2, 4);
+INSERT INTO contents VALUES(DEFAULT, 'Les compétitions', 'les-competitions', 'Bon là je sais pas quoi dire donc je vais rien dire, a+', DEFAULT, DEFAULT, 1, 3, 4);
 

@@ -41,6 +41,7 @@ CREATE TABLE contents
 (
 	id						SERIAL,
 	name					VARCHAR(140),
+	slug					VARCHAR(140),
 	content					TEXT,
 	created					TIMESTAMP				DEFAULT NOW(),
 	published				TIMESTAMP				DEFAULT NOW(),
