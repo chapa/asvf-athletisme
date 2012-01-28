@@ -1,4 +1,8 @@
 <div class="page-header">
 	<h1><?php echo $page['name']; ?></h1>
 </div>
-<p><?php echo $page['content']; ?></p>
+<div class="row">
+	<div class="span12">
+		<?php echo $page['content']; ?>
+	</div>
+</div>
