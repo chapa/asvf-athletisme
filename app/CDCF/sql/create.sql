@@ -1,9 +1,9 @@
 CREATE TYPE displayAuth AS ENUM ('pri', 'pro', 'pub');
-CREATE TYPE memberStatus AS ENUM ('Restreint', 'Adhérent', 'Rédacteur', 'Administrateur');
+CREATE TYPE userStatus AS ENUM ('Restreint', 'Adhérent', 'Rédacteur', 'Administrateur');
 
 	----- Gestion des membres -----
 
-CREATE TABLE members
+CREATE TABLE users
 (
 	id						SERIAL,
 	pseudo					VARCHAR(70),
@@ -14,7 +14,7 @@ CREATE TABLE members
 	firstName				VARCHAR(70),
 	birth					DATE,
 	created					TIMESTAMP				DEFAULT NOW(),
-	status					memberStatus			DEFAULT 'Restreint',
+	status					userStatus				DEFAULT 'Restreint',
 
 	PRIMARY KEY (id)
 );
@@ -47,11 +47,11 @@ CREATE TABLE contents
 	published				TIMESTAMP				DEFAULT NOW(),
 	content_type_id			INTEGER,
 	content_category_id		INTEGER,
-	member_id				INTEGER,
+	user_id					INTEGER,
 
 	PRIMARY KEY	(id),
 	FOREIGN KEY (content_type_id) REFERENCES content_types(id),
 	FOREIGN KEY (content_category_id) REFERENCES content_categories(id),
-	FOREIGN KEY (member_id) REFERENCES members(id)
+	FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
