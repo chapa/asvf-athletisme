@@ -7,9 +7,10 @@
 	</head>
 	<body>
 		
-		<?php echo $this->element('menu_default'); ?>
+		<?php echo $this->element('menus/menu_default'); ?>
 		<div class="container">
 			<?php echo $this->Session->flash(); ?>
+			<?php echo $this->Session->flash('auth'); ?>
 			<?php echo $content_for_layout; ?>
 		</div>
 		<?php echo $this->element('sql_dump'); ?>

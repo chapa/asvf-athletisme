@@ -3,11 +3,8 @@
 	class PagesController extends AppController
 	{
 		public $uses = array('Content');
-
-		public function menu()
-		{
-			return $this->Content->getPage();
-		}
+		public function beforeFilter() { $this->Auth->allow('menu'); }
+		public function menu() { return $this->Content->getPage(); }
 
 		public function show($id = NULL, $slug = NULL)
 		{
