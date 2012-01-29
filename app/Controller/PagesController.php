@@ -6,22 +6,12 @@
 
 		public function menu()
 		{
-			return $this->Content->find('all', array(
-				'fields' => array('Content.id', 'Content.slug', 'Content.name'),
-				'conditions' => array('ContentType.name' => 'Page', 'Content.published <= NOW()')
-			));
+			return $this->Content->getPage();
 		}
 
 		public function show($id = NULL, $slug = NULL)
 		{
-			$page = $this->Content->find('first', array(
-				'fields' => array(
-					'Content.id', 'Content.name', 'Content.slug', 'Content.content', 'Content.published',
-					'Member.pseudo', 'Member.name', 'Member.firstname',
-					'ContentType.name',
-					'ContentCategory.name'),
-				'conditions' => array('Content.id' => $id, 'ContentType.name' => 'Page', 'Content.published <= NOW()')
-			));
+			$page = $this->Content->getPage($id);
 
 			if(empty($page))
 				throw new NotFoundException('La page n\'existe pas');
@@ -30,6 +20,7 @@
 				$this->redirect($page['Content']['link'], 301);
 			
 			$d['page'] = current($page);
+			$d['title_for_layout'] = $page['Content']['name'];
 			$this->set($d);
 		}
 	}

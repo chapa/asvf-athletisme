@@ -150,4 +150,30 @@ class Content extends AppModel {
 		}
 		return $data;
 	}
+
+	public function getPage($params = array())
+	{
+		if(!empty($params['id'])) // $id existe, on demande à afficher une page
+		{
+			$type = 'first';
+			$options = array(
+				'fields' => array(
+					'Content.id', 'Content.name', 'Content.slug', 'Content.content', 'Content.published',
+					'User.pseudo', 'User.name', 'User.firstname',
+					'ContentType.name',
+					'ContentCategory.name'),
+				'conditions' => array('Content.id' => $params['id'], 'ContentType.name' => 'Page', 'Content.published <= NOW()')
+			);
+		}
+		else
+		{
+			$type = 'all';
+			$date = !empty($params['all']) ? 'Content.published <= NOW()' : '';
+			$options = array(
+				'fields' => array('Content.id', 'Content.slug', 'Content.name'),
+				'conditions' => array('ContentType.name' => 'Page', $date)
+			);
+		}
+		return $this->find($type, $options);
+	}
 }
