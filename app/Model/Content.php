@@ -124,9 +124,9 @@ class Content extends AppModel {
 			'fields' => '',
 			'order' => ''
 		),
-		'Member' => array(
-			'className' => 'Member',
-			'foreignKey' => 'member_id',
+		'User' => array(
+			'className' => 'User',
+			'foreignKey' => 'user_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

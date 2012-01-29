@@ -5,7 +5,7 @@ App::uses('AppModel', 'Model');
  *
  * @property Content $Content
  */
-class Member extends AppModel {
+class User extends AppModel {
 /**
  * Display field
  *
@@ -120,7 +120,7 @@ class Member extends AppModel {
 	public $hasMany = array(
 		'Content' => array(
 			'className' => 'Content',
-			'foreignKey' => 'member_id',
+			'foreignKey' => 'user_id',
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
