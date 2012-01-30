@@ -5,7 +5,7 @@
 </div>
 
 <div class="row">
-	<div class="span12">
+	<div class="span16">
 		<?php echo $page['content']; ?>
 	</div>
 </div>
