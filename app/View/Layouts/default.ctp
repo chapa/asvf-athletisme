@@ -4,16 +4,22 @@
 		<?php echo $this->Html->charset(); ?>
 		<title> <?php echo $title_for_layout; ?> </title>
 		<?php echo $this->Html->css('bootstrap'); ?>
+		<?php echo $this->Html->css('Aristo'); ?>
 	</head>
 	<body>
 		
 		<?php echo $this->element('menus/menu_default'); ?>
 		<div class="container">
-			<?php echo $this->Session->flash(); ?>
 			<?php echo $this->Session->flash('auth'); ?>
+			<?php echo $this->Session->flash(); ?>
 			<?php echo $content_for_layout; ?>
 		</div>
 		<?php echo $this->element('sql_dump'); ?>
-
+		<?php echo $scripts_for_layout; ?>
+		<?php echo $this->Html->script('jquery.js'); ?>
+		<?php echo $this->Html->script('jquery-ui.js'); ?>
+		<?php echo $this->Html->script('timepicker.js'); ?>
+		<?php echo $this->Html->script('bootstrap-dropdown'); ?>
+		<?php echo $this->Html->script('utile.js'); ?>
 	</body>
 </html>

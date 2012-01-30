@@ -30,6 +30,11 @@ form .clearfix {
   margin-bottom: @baseline;
   .clearfix()
 }
+.clearfix div.required label:after {
+  content: ' *';
+  font-weight: bold;
+  color: #F00;
+}
 
 // Set font for forms
 label,
@@ -45,13 +50,13 @@ label {
   font-size: @basefont;
   line-height: @baseline;
   float: left;
-  width: 130px;
+  width: 140px;
   text-align: right;
   color: @grayDark;
 }
 
 // Shift over the inside div to align all label's relevant content
-form .input {
+form input, form textarea {
   margin-left: 150px;
 }
 
@@ -76,6 +81,8 @@ select,
   border: 1px solid #ccc;
   .border-radius(3px);
 }
+select { width: 100px; }
+.clearfix select:first-of-type { margin-left: 150px; }
 
 // remove padding from select
 select {
@@ -108,6 +115,7 @@ input[type=submit] {
   width: auto;
   height: auto;
 }
+div.submit { display: inline; }
 
 select,
 input[type=file] {
@@ -196,15 +204,24 @@ select:focus {
   }
 }
 // Error
-form .clearfix.error {
+form .clearfix .error {
   .formFieldState(#b94a48, #ee5f5b, lighten(#ee5f5b, 30%));
+  background-color: lighten(@red, 50%);
+  padding: 10px 0;
+  .border-radius(5px);
+}
+form .clearfix .error .error-message {
+  color: lighten(@red, 30%);
+  font-weight: bold;
+  margin-left: 50px;
+  display: inline;
 }
 // Warning
-form .clearfix.warning {
+form .clearfix .warning {
   .formFieldState(#c09853, #ccae64, lighten(#CCAE64, 5%));
 }
 // Success
-form .clearfix.success {
+form .clearfix .success {
   .formFieldState(#468847, #57a957, lighten(#57a957, 30%));
 }
 
@@ -465,7 +482,7 @@ textarea[readonly] {
       }
     }
   }
-  div.clearfix.error {
+  div.clearfix .error {
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 10px;
