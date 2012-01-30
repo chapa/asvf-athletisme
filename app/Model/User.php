@@ -117,6 +117,8 @@ class User extends AppModel {
 			$this->data['User']['name'] = strtoupper($this->data['User']['name']);
 		if (!empty($this->data['Usre']['firstname']))
 			$this->data['User']['firstname'] = ucwords($this->data['User']['firstname']);
+		if (!empty($this->data['User']['pass']))
+		  	$this->data['User']['pass'] = AuthComponent::password($this->data['User']['pass']);
 		return true;
 	}
 

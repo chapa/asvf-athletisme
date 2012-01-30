@@ -9,15 +9,24 @@
 		}
 		public function login ()
 		{
-			if ($this->request->is('post'))
-				debug($this->request->data);
+			if ($this->Auth->login())
+			{
+				$this->Session->setFlash('Bonjour '.$this->Auth->user('pseudo'), 'message', array('class' => 'success'));
+				$this->redirect($this->Auth->loginRedirect);
+			}
+			elseif ($this->request->is('post'))
+			{
+				$this->Session->setFlash('Le mot de passe ou le pseudo semble incorrect', 'message');
+				$this->request->data['User']['pass'] = null;
+			}
+			
 			if ($this->Auth->user('id'))
 				$this->redirect(array('controller' => 'pages', 'action' => 'index'));
 		}
 
 		public function logout ()
 		{
-			$this->Session->setFlash('A bientot '.$this->Auth->user('pseudo'));
+			$this->Session->setFlash('A bientot '.$this->Auth->user('pseudo'), 'message', array('class' => 'success'));
 			$this->redirect($this->Auth->logout());
 		}
 
@@ -26,25 +35,22 @@
 			if ($this->request->is('post'))
 			{
 				$d = $this->request->data;
-				// if (!empty($d['User']['pass']))
-				//  	$d['User']['pass'] = $this->Auth->password($d['User']['pass']);
 				$this->User->set($d);
 				if ($this->User->validates())
 				{
-					// debug($d);
-					// $this->User->save($d, true, array('pseudo', 'pass', 'mail', 'displaymail', 'name', 'firstname', 'birth'));
-					// App::uses('CakeEmail', 'Network/Email');
-					// $link = array('controller' => 'users', 'action' => 'activate', $this->User->id.'-'.$d['User']['pass']);
-					// $mail = new CakeEmail();
-					// $mail	->from('noreply@localhost')
-					// 		->to($d['User']['mail'])
-					// 		->subject('Test')
-					// 		->emailFormat('html')
-					// 		->tmplate('signup')
-					// 		->viewVars(array('pseudo' => $d['User']['pseudo'], 'link' => $link))
-					// 		->send();
+					$this->User->save($d, true, array('pseudo', 'pass', 'mail', 'displaymail', 'name', 'firstname', 'birth'));
+					App::uses('CakeEmail', 'Network/Email');
+					$link = array('controller' => 'users', 'action' => 'activate', $this->User->id.'-'.$d['User']['pass']);
+					$mail = new CakeEmail();
+					$mail	->from('noreply@localhost')
+							->to($d['User']['mail'])
+							->subject('Test')
+							->emailFormat('html')
+							->tmplate('signup')
+							->viewVars(array('pseudo' => $d['User']['pseudo'], 'link' => $link))
+							->send();
 					$this->Session->setFlash('Votre compte a bien été créé, un mail de confirmation a été envoyé à <strong>'.$d['User']['mail'].'</strong>', 'message', array('class' => 'success'));
-					// $this->redirect('/');
+					$this->redirect('/');
 				}
 				else
 					$this->Session->setFlash('Votre inscription comporte des erreurs', 'message');
