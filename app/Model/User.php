@@ -40,7 +40,7 @@ class User extends AppModel {
 		'mail' => array(
 			'email' => array(
 				'rule' => array('email'),
-				'message' => 'Ce n\'est pas une adresse mail',
+				'message' => 'Ce n\'est pas une adresse mail valide',
 				'allowEmpty' => false,
 				'required' => true,
 			),

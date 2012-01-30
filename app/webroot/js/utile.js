@@ -10,6 +10,7 @@ jQuery(function($){
 
 	// Menu dropdown
 	$('.dropdown').dropdown();
+	$('.dropdown-menu').find('form').click(function(e) { e.stopPropagation(); });
 
 	// Tous les liens sans destination
 	$('a[href=#]').live('click', function(){  return false; });

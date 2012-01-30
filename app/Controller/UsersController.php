@@ -56,7 +56,10 @@
 					$this->redirect('/');
 				}
 				else
+				{
 					$this->Session->setFlash('Votre inscription comporte des erreurs', 'message');
+					$this->request->data['User']['pass'] = null;
+				}
 			}
 		}
 
