@@ -2,7 +2,7 @@
 	
 	class AppController extends Controller
 	{
-		public $components = array('Auth', 'Session');
+		public $components = array('Auth', 'Session', 'Cookie');
 		public $helpers = array('Html', 'Form', 'Session');
 
 		public $status = array(
@@ -13,14 +13,14 @@
 			'Administrateur' => array('id' => 4, 'layout' => 'admin')
 		);
 
-		public function beforeFilter()
+		public function beforeFilter ()
 		{
-			$this->Auth->loginRedirect	= array('controller' => 'pages', 'action' => 'show');
 			$this->Auth->fields			= array('username' => 'pseudo', 'password' => 'pass');
-			$this->Auth->userModel		= 'User';
+			$this->Auth->flash			= array('element' => 'AuthError', 'key' => 'auth', 'params' => array());
+			$this->Auth->loginRedirect	= array('controller' => 'pages', 'action' => 'index');
+			$this->Auth->logoutRedirect	= array('controller' => 'pages', 'action' => 'index');
 			$this->Auth->authError		= 'Vous n\'avez pas le droit d\'accéder à cette page';
-			$this->Auth->loginError		= 'Votre pseudo ou votre mot de passe est incorrect';
-			$this->Auth->flashElement	= 'auth_error';
+			// debug($this->Auth);
 		}
 	}
 

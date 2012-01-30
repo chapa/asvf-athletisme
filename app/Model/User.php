@@ -18,94 +18,72 @@ class User extends AppModel {
  * @var array
  */
 	public $validate = array(
-		'id' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
 		'pseudo' => array(
 			'alphanumeric' => array(
-				'rule' => array('alphanumeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'rule' => array('custom', '#[a-z0-9\-\_]{3,}$#i'),
+				'message' => 'Votre pseudo n\'est pas valide',
+				'allowEmpty' => false,
+				'required' => true,
+			),
+			'unique' => array(
+				'rule' => array('isUnique'),
+				'message' => 'Ce pseudo est déjà utilisé',
+			),
+		),
+		'pass' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				'message' => 'Vous devez entrer un mot de passe',
+				'allowEmpty' => false, 
 			),
 		),
 		'mail' => array(
 			'email' => array(
 				'rule' => array('email'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'message' => 'Ce n\'est pas une adresse mail',
+				'allowEmpty' => false,
+				'required' => true,
+			),
+			'unique' => array(
+				'rule' => array('isUnique'),
+				'message' => 'Cet email est déjà utilisé',
 			),
 		),
 		'displaymail' => array(
 			'inlist' => array(
 				'rule' => array('inlist', array('pri', 'pro', 'pub')),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'message' => 'La privacité n\'est pas bonne',
+				'allowEmpty' => false,
+				'required' => true,
 			),
 		),
 		'name' => array(
 			'alphanumeric' => array(
-				'rule' => array('alphanumeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'rule' => array('custom', '#^[a-z0-9\-]+$#i'),
+				'message' => 'Votre nom n\'est pas valide',
+				'allowEmpty' => true,
+				'required' => false,
 			),
 		),
 		'firstname' => array(
 			'alphanumeric' => array(
-				'rule' => array('alphanumeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'rule' => array('custom', '#^[a-z0-9\-]+$#i'),
+				'message' => 'Votre nom n\'est pas valide',
+				'allowEmpty' => true,
+				'required' => false,
 			),
 		),
 		'birth' => array(
 			'date' => array(
 				'rule' => array('date'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'created' => array(
-			'datetime' => array(
-				'rule' => array('datetime'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'message' => 'La date est incorrecte',
+				'allowEmpty' => true,
+				'required' => false,
 			),
 		),
 		'status' => array(
 			'inlist' => array(
 				'rule' => array('inlist', array('Restreint', 'Adhérent', 'Rédacteur', 'Administrateur')),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
 	);
@@ -132,5 +110,14 @@ class User extends AppModel {
 			'counterQuery' => ''
 		)
 	);
+
+	public function beforeSave()
+	{
+		if (!empty($this->data['User']['name']))
+			$this->data['User']['name'] = strtoupper($this->data['User']['name']);
+		if (!empty($this->data['Usre']['firstname']))
+			$this->data['User']['firstname'] = ucwords($this->data['User']['firstname']);
+		return true;
+	}
 
 }

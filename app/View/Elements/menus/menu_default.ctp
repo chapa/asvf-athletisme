@@ -11,6 +11,16 @@
 				</li>
 			<?php endforeach; ?>
 		</ul>
+
+		<ul class="nav secondary-nav">
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle">Se connecter</a>
+				<ul class="dropdown-menu">
+					<li><a href="#">Pseudo</a></li>
+					<li><a href="#">Mot de passe</a></li>
+				</ul>
+			</li>
+		</ul>
 		</div>
 	</div>
 </div>
