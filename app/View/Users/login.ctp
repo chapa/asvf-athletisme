@@ -4,7 +4,7 @@
 </div>
 
 <div class="row">
-	<div class="span16">
+	<div class="span12">
 	<?php echo $this->Form->create('User'); ?>
 	<div class="clearfix">
 	<?php echo $this->Form->input('pseudo', array('label' => 'Pseudo')); ?>

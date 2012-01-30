@@ -1,9 +1,10 @@
 <?php $pages = $this->requestAction(array('controller' => 'pages', 'action' => 'menu')); ?>
 
-<div class="topbar">
-	<div class="fill">
+<div class="navbar">
+	<div class="navbar-inner">
 		<div class="container">
 		<?php echo $this->Html->link('ASVF Athlétisme', '/', array('class' => 'brand')) ?>
+
 		<ul class="nav">
 			<?php foreach($pages as $v) : $v = current($v); ?>
 				<li<?php echo ($this->request->here == $this->Html->url($v['link'])) ? ' class="active"' : ''; ?>>
@@ -12,9 +13,9 @@
 			<?php endforeach; ?>
 		</ul>
 
-		<ul class="nav secondary-nav">
+		<ul class="nav pull-right">
 			<li class="dropdown">
-				<a href="#" class="dropdown-toggle">Inscription rapide</a>
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Inscription rapide</a>
 				<ul class="dropdown-menu" id="connexion">
 					<?php echo $this->Form->create('User', array('controller' => 'users', 'action' => 'signup')); ?>
 					<div class="clearfix">
@@ -36,7 +37,7 @@
 			</li>
 
 			<li class="dropdown">
-				<a href="#" class="dropdown-toggle">Se connecter</a>
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Se connecter</a>
 				<ul class="dropdown-menu" id="connexion">
 					<?php echo $this->Form->create('User', array('controller' => 'users', 'action' => 'login')); ?>
 					<div class="clearfix">

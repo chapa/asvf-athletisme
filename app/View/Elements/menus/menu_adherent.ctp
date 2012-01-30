@@ -1,7 +1,7 @@
 <?php $pages = $this->requestAction(array('controller' => 'pages', 'action' => 'menu')); ?>
 
-<div class="topbar">
-	<div class="fill">
+<div class="navbar">
+	<div class="navbar-inner">
 		<div class="container-fluid">
 		<?php echo $this->Html->link('ASVF Athlétisme', '/', array('class' => 'brand')) ?>
 		<ul class="nav">
@@ -12,7 +12,7 @@
 			<?php endforeach; ?>
 		</ul>
 
-		<ul class="nav secondary-nav">
+		<ul class="nav pull-right">
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle">Mon compte</a>
 				<ul class="dropdown-menu" id="connexion">

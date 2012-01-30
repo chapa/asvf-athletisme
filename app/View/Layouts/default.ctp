@@ -19,7 +19,7 @@
 		<?php echo $this->Html->script('jquery.js'); ?>
 		<?php echo $this->Html->script('jquery-ui.js'); ?>
 		<?php echo $this->Html->script('timepicker.js'); ?>
-		<?php echo $this->Html->script('bootstrap-dropdown'); ?>
 		<?php echo $this->Html->script('utile.js'); ?>
+		<?php echo $this->Html->script('bootstrap/dropdown'); ?>
 	</body>
 </html>
