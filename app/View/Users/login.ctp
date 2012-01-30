@@ -1,3 +1,4 @@
+<?php $this->title = 'Se connecter'; ?>
 <div class="page-header">
 	<h1>Connexion</h1>
 </div>

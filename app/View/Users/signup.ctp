@@ -1,3 +1,4 @@
+<?php $this->title = 'S\'inscrire'; ?>
 <div class="page-header">
 	<h1>S'inscrire</h1>
 </div>
