@@ -11,7 +11,10 @@
 		{
 			if ($this->Auth->login())
 			{
-				$this->Session->setFlash('Bonjour '.$this->Auth->user('pseudo'), 'message', array('class' => 'success'));
+				if ($this->Auth->user('status') == 'Restreint')
+					$this->Session->setFlash('Vous ne pouvez actuellement pas poster de commentaire, consultez vos email', 'message', array('class' => 'info'));
+				else
+					$this->Session->setFlash('Bonjour '.$this->Auth->user('pseudo'), 'message', array('class' => 'success'));
 				$this->redirect($this->Auth->loginRedirect);
 			}
 			elseif ($this->request->is('post'))

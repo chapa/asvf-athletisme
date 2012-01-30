@@ -1,4 +1,6 @@
 jQuery(function($){
+
+	// Les datepicker
 	$('.datepicker').datepicker({
 		changeYear: true,
 		changeMonth: true,
@@ -6,7 +8,13 @@ jQuery(function($){
 		dateFormat: 'd/m/y',
 	});
 
+	// Menu dropdown
 	$('.dropdown').dropdown();
 
+	// Tous les liens sans destination
 	$('a[href=#]').live('click', function(){  return false; });
+
+	$('.alert-message .close').click(function(){
+		$(this).parent().slideUp();
+	});
 });

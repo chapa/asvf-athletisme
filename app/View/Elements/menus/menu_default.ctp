@@ -14,10 +14,41 @@
 
 		<ul class="nav secondary-nav">
 			<li class="dropdown">
+				<a href="#" class="dropdown-toggle">Inscription rapide</a>
+				<ul class="dropdown-menu" id="connexion">
+					<?php echo $this->Form->create('User', array('controller' => 'users', 'action' => 'signup')); ?>
+					<div class="clearfix">
+						<span>Pseudo</span>
+						<?php echo $this->Form->text('pseudo', array('label' => false)); ?>
+					</div>
+					<div class="clearfix">
+						<span>Mot de passe</span>
+						<?php echo $this->Form->password('pass', array('label' => false)); ?>
+					</div>
+					<div class="clearfix">
+						<span>Mail</span>
+						<?php echo $this->Form->text('mail', array('label' => false)); ?>
+					</div>
+					<?php echo $this->Form->hidden('displaymail', array('value' => 'pri')); ?>
+					<?php echo $this->Form->submit('S\'inscrire', array('class' => 'btn primary'));?>
+					<?php echo $this->Form->end(); ?>
+				</ul>
+			</li>
+
+			<li class="dropdown">
 				<a href="#" class="dropdown-toggle">Se connecter</a>
-				<ul class="dropdown-menu">
-					<li><a href="#">Pseudo</a></li>
-					<li><a href="#">Mot de passe</a></li>
+				<ul class="dropdown-menu" id="connexion">
+					<?php echo $this->Form->create('User', array('controller' => 'users', 'action' => 'login')); ?>
+					<div class="clearfix">
+						<span>Login</span>
+						<?php echo $this->Form->text('pseudo', array('label' => false)); ?>
+					</div>
+					<div class="clearfix">
+						<span>Mot de passe</span>
+						<?php echo $this->Form->password('pass', array('label' => false)); ?>
+					</div>
+					<?php echo $this->Form->submit('Connexion', array('class' => 'btn primary'));?>
+					<?php echo $this->Form->end(); ?>
 				</ul>
 			</li>
 		</ul>

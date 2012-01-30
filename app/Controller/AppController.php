@@ -7,7 +7,7 @@
 
 		public $status = array(
 			'Visiteur'       => array('id' => 0, 'layout' => 'default'),
-			'Restreint'      => array('id' => 1, 'layout' => 'restreint'),
+			'Restreint'      => array('id' => 1, 'layout' => 'adherent'),
 			'Adhérent'       => array('id' => 2, 'layout' => 'adherent'),
 			'Rédacteur'      => array('id' => 3, 'layout' => 'redacteur'),
 			'Administrateur' => array('id' => 4, 'layout' => 'admin')
@@ -20,6 +20,12 @@
 			$this->Auth->loginRedirect	= array('controller' => 'pages', 'action' => 'index');
 			$this->Auth->logoutRedirect	= array('controller' => 'pages', 'action' => 'index');
 			$this->Auth->authError		= 'Vous n\'avez pas le droit d\'accéder à cette page';
+		}
+
+		public function beforeRender()
+		{
+			if ($this->Auth->loggedIn())
+				$this->layout = $this->status[$this->Auth->user('status')]['layout'];
 		}
 	}
 
