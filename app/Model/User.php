@@ -24,6 +24,7 @@ class User extends AppModel {
 				'message' => 'Votre pseudo n\'est pas valide',
 				'allowEmpty' => false,
 				'required' => true,
+				'on' => 'create',
 			),
 			'unique' => array(
 				'rule' => array('isUnique'),
@@ -35,6 +36,7 @@ class User extends AppModel {
 				'rule' => array('notempty'),
 				'message' => 'Vous devez entrer un mot de passe',
 				'allowEmpty' => false, 
+				'on' => 'create',
 			),
 		),
 		'mail' => array(
@@ -75,7 +77,7 @@ class User extends AppModel {
 		),
 		'birth' => array(
 			'date' => array(
-				'rule' => array('date'),
+				'rule' => array('date', 'dmy'),
 				'message' => 'La date est incorrecte',
 				'allowEmpty' => true,
 				'required' => false,
@@ -115,11 +117,26 @@ class User extends AppModel {
 	{
 		if (!empty($this->data['User']['name']))
 			$this->data['User']['name'] = strtoupper($this->data['User']['name']);
-		if (!empty($this->data['Usre']['firstname']))
+		if (!empty($this->data['User']['firstname']))
 			$this->data['User']['firstname'] = ucwords($this->data['User']['firstname']);
 		if (!empty($this->data['User']['pass']))
 		  	$this->data['User']['pass'] = AuthComponent::password($this->data['User']['pass']);
 		return true;
+	}
+	
+	public function afterFind (array $result, $primaire)
+	{
+		foreach ($result as $k => $v)
+		{
+			unset($result[$k]['User']['pass']);
+			if (isset($v['User']))
+			{
+				$date = explode('-', $v['User']['birth']);
+				$result[$k]['User']['birth'] = $date[2].'/'.$date[1].'/'.$date[0];
+			}
+		}
+
+		return $result;
 	}
 
 }

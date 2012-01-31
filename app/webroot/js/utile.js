@@ -5,7 +5,7 @@ jQuery(function($){
 		changeYear: true,
 		changeMonth: true,
 		yearRange: '-30y:-15y',
-		dateFormat: 'd/m/y',
+		dateFormat: 'dd/mm/yy',
 	});
 
 	// Menu dropdown

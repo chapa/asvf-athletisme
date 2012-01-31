@@ -1,22 +1,9 @@
-<?php $this->title = 'S\'inscrire'; ?>
 <div class="page-header">
-	<h1>S'inscrire</h1>
+	<h1><?php echo $this->request->data['User']['pseudo']; ?></h1>
 </div>
-
-<div class="alert-message">
-	<p>Les champs marqués d'un <strong class="warning">*</strong> sont obligatoire</p>
-</div>
-
 
 <div class="row">
-	<div class="span16">
 		<?php echo $this->Form->create('User'); ?>
-		<div class="clearfix">
-		<?php echo $this->Form->input('pseudo'); ?>
-		</div>
-		<div class="clearfix">
-		<?php echo $this->Form->input('pass', array('label' => 'Mot de passe', 'type' => 'password')); ?>
-		</div>
 		<div class="clearfix">
 		<?php echo $this->Form->input('mail'); ?>
 		</div>
@@ -38,8 +25,8 @@
 		<?php echo $this->Form->input('birth', array('label' => 'Date de naissance', 'type' => 'text', 'class' => 'datepicker', 'readonly' => 'readonly')); ?>
 		</div>
 		<div class="actions">
-		<?php echo $this->Form->submit('S\'inscrire', array('class' => 'btn primary')); ?>
+		<?php echo $this->Form->submit('Enregistrer', array('class' => 'btn primary')); ?>
 		</div>
 		<?php echo $this->Form->end(); ?>
-	</div>
+
 </div>

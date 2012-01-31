@@ -2,11 +2,8 @@
 
 	class UsersController extends AppController
 	{
-		public function beforeFilter()
-		{
-			parent::beforeFilter();
-			$this->Auth->allow('signup', 'activate');
-		}
+		public function beforeFilter() { parent::beforeFilter(); $this->Auth->allow('signup', 'activate'); }
+
 		public function login ()
 		{
 			if ($this->Auth->login())
@@ -33,6 +30,9 @@
 			$this->redirect($this->Auth->logout());
 		}
 
+		/**
+		* Enregistrer un utilisateur
+		**/
 		public function signup ()
 		{
 			if ($this->request->is('post'))
@@ -63,6 +63,10 @@
 			}
 		}
 
+		/**
+		* Activation du compte
+		* @param str Chaine du token (mot de passe crypté) accompagné de l'id du membre
+		**/
 		public function activate($token)
 		{
 			$token = explode('-', $token);
@@ -77,7 +81,35 @@
 			else
 				$this->Session->setFlash('Ce lien d\'activation n\'est pas valide', 'message');
 			$this->redirect('/');
-			debug($user);
-			die();
+		}
+
+		/**
+		* Edition de compte
+		* Si l'id n'est pas donné, on édite son propre compte
+		* Si l'id est donné et qu'on est pas administrateur, on est redirigé
+		* @param int Id du compte à editer, si null c'est le sien
+		*/
+		public function edit ($id = NULL)
+		{
+			$id = (is_null($id)) ? $this->Auth->user('id') : $id;
+			if ($id !=  $this->Auth->user('id') AND $this->status[$this->Auth->user('status')]['id'] < $this->status['Administrateur']['id'])
+				$id =  $this->Auth->user('id');
+			$this->User->id = $id;
+			$this->User->recursive = -1;
+			if ($this->request->is('put'))
+			{
+				$d = $this->request->data;
+				$this->User->set($d);
+				if ($this->User->validates())
+				{
+					$this->User->save($d, true, array('name', 'firstname', 'birth', 'displaymail', 'mail'));
+					$this->Session->setFlash('Les modifications ont bien été enregistrées', 'message', array('class' => 'success'));
+					$this->redirect(array('controller' => 'pages', 'action' => 'index'));
+				}
+				else
+					$this->Session->setFlash('Les modifications comportent des erreurs', 'message');
+			}
+			else
+				$this->request->data = $this->User->read();
 		}
 	}

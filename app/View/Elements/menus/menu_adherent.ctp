@@ -16,7 +16,7 @@
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle">Mon compte</a>
 				<ul class="dropdown-menu" id="connexion">
-					<li><a href="#">mon compte</a></li>
+					<li><?php echo $this->Html->link('Mon Compte', array('controller' => 'users', 'action' => 'edit')); ?></li>
 					<li><a href="#">mon compte</a></li>
 					<li><a href="#">mon compte</a></li>
             	</ul>
