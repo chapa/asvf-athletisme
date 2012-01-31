@@ -9,10 +9,14 @@
 	<body>
 		
 		<?php echo $this->element('menus/menu_admin'); ?>
-		<div class="container-fluid">
+		<div class="container-fluid" style="margin-top: 55px;">
 			<?php echo $this->Session->flash('auth'); ?>
 			<?php echo $this->Session->flash(); ?>
-			<?php echo $content_for_layout; ?>
+			<div class="sidebar">
+				<?php echo $this->element('sidebar'); ?>
+			</div>
+			<div class="content"><?php echo $content_for_layout; ?></div>
+
 		</div>
 		<?php echo $this->element('sql_dump'); ?>
 		<?php echo $scripts_for_layout; ?>
