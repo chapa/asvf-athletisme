@@ -10,12 +10,14 @@
 		
 		<?php echo $this->element('menus/menu_adherent'); ?>
 		<div class="container-fluid" style="margin-top: 55px;">
-			<?php echo $this->Session->flash('auth'); ?>
-			<?php echo $this->Session->flash(); ?>
 			<div class="sidebar">
 				<?php echo $this->element('sidebar'); ?>
 			</div>
-			<div class="content"><?php echo $content_for_layout; ?></div>
+			<div class="content">
+				<?php echo $this->Session->flash('auth'); ?>
+				<?php echo $this->Session->flash(); ?>
+				<?php echo $content_for_layout; ?>
+			</div>
 
 		</div>
 		<?php echo $this->element('sql_dump'); ?>
