@@ -12,6 +12,9 @@
 			'Rédacteur'      => array('id' => 3, 'layout' => 'redacteur'),
 			'Administrateur' => array('id' => 4, 'layout' => 'admin')
 		);
+		public $displayMail = array('pri' => 'Privée (Vous uniquement)',
+									'pro' => 'Protégée (membres uniquement)',
+									'pub' => 'Publique (Visibilité totale)');
 
 		public function beforeFilter ()
 		{

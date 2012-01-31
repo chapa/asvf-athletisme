@@ -24,9 +24,7 @@
 		<?php echo $this->Form->input('displaymail', array(
 								'label' => 'Visibilité de l\'adresse',
 								'class' => 'span4',
-								'options' => array(	'pri' => 'Privée (Vous uniquement)',
-													'pro' => 'Protégée (membres uniquement)',
-													'pub' => 'Publique (Visibilité totale)'))); ?>
+								'options' => $options)); ?>
 		</div>
 		<div class="clearfix">
 		<?php echo $this->Form->input('name', array('label' => 'Nom')); ?>

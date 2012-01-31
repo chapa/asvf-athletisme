@@ -61,6 +61,7 @@
 					$this->request->data['User']['pass'] = null;
 				}
 			}
+			$this->set('options', $this->displayMail);
 		}
 
 		/**
@@ -111,5 +112,6 @@
 			}
 			else
 				$this->request->data = $this->User->read();
+			$this->set('options', $this->displayMail);
 		}
 	}

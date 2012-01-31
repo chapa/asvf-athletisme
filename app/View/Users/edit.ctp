@@ -4,16 +4,16 @@
 
 <div class="row">
 		<?php echo $this->Form->create('User'); ?>
+		<?php echo $this->Form->input('pseudo', array('type' => 'hidden')); ?>
+		<?php echo $this->Form->input('id', array('type' => 'hidden')); ?>
 		<div class="clearfix">
 		<?php echo $this->Form->input('mail'); ?>
 		</div>
 		<div class="clearfix">
-		<?php echo $this->Form->input('displaymail', array(
-								'label' => 'Visibilité de l\'adresse',
-								'class' => 'span4',
-								'options' => array(	'pri' => 'Privée (Vous uniquement)',
-													'pro' => 'Protégée (membres uniquement)',
-													'pub' => 'Publique (Visibilité totale)'))); ?>
+		<?php echo $this->Form->input(	'displaymail', array(
+										'label' => 'Visibilité de l\'adresse',
+										'class' => 'span4',
+										'options' => $options)); ?>
 		</div>
 		<div class="clearfix">
 		<?php echo $this->Form->input('name', array('label' => 'Nom')); ?>
