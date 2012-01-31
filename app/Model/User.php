@@ -129,7 +129,7 @@ class User extends AppModel {
 		foreach ($result as $k => $v)
 		{
 			unset($result[$k]['User']['pass']);
-			if (isset($v['User']))
+			if (isset($v['User']['birth']))
 			{
 				$date = explode('-', $v['User']['birth']);
 				$result[$k]['User']['birth'] = $date[2].'/'.$date[1].'/'.$date[0];
