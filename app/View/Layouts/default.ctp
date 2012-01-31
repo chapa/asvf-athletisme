@@ -9,7 +9,7 @@
 	<body>
 		
 		<?php echo $this->element('menus/menu_default'); ?>
-		<div class="container">
+		<div class="container" style="margin-top: 55px;">
 			<?php echo $this->Session->flash('auth'); ?>
 			<?php echo $this->Session->flash(); ?>
 			<?php echo $content_for_layout; ?>
